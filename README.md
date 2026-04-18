@@ -36,7 +36,6 @@
 ## Installation
 
 ```bash
-git clone <your-fork-or-repo>.git
 cd ts-swarm-agents
 npm install
 ```
