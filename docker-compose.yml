@@ -1,0 +1,23 @@
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  swarm-worker-1:
+    build: .
+    environment:
+      REDIS_URL: redis://redis:6379
+      AGENT_NAME: translator
+    command: ["node", "dist/worker.js"]
+    depends_on:
+      - redis
+
+  swarm-worker-2:
+    build: .
+    environment:
+      REDIS_URL: redis://redis:6379
+      AGENT_NAME: summarizer
+    command: ["node", "dist/worker.js"]
+    depends_on:
+      - redis

@@ -1,0 +1,51 @@
+{
+  "name": "ts-swarm-agents",
+  "version": "0.1.0",
+  "description": "Lightweight swarm coordination for TypeScript AI agents — decentralized collaboration via message passing and task negotiation.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "node ./node_modules/typescript/lib/tsc.js",
+    "dev": "node ./node_modules/tsx/dist/cli.mjs watch src/dev.ts",
+    "start": "node ./node_modules/typescript/lib/tsc.js && node dist/dev.js",
+    "demo": "node ./node_modules/tsx/dist/cli.mjs examples/demo.ts",
+    "worker": "node ./node_modules/tsx/dist/cli.mjs src/worker.ts",
+    "test": "node ./node_modules/vitest/vitest.mjs run",
+    "test:watch": "node ./node_modules/vitest/vitest.mjs",
+    "test:simulation": "node ./node_modules/vitest/vitest.mjs run tests/simulation.test.ts",
+    "test:distributed": "node ./node_modules/vitest/vitest.mjs run tests/redis.integration.test.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "ai-agents",
+    "swarm",
+    "multi-agent",
+    "typescript",
+    "coordination"
+  ],
+  "license": "MIT",
+  "prepublishOnly": "npm run build",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "vitest": "^3.1.1"
+  },
+  "dependencies": {
+    "redis": "^4.7.0"
+  }
+}
